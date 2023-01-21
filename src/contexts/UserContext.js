@@ -13,12 +13,14 @@ const UserContext = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    // login with google
     const loginWithGoogle = (provider) => {
         setLoading(true)
        return signInWithPopup(auth, provider)
        
     }
 
+    // manage user
     useEffect( () => {
       const unSubsCribe =  onAuthStateChanged(auth, (currentUser) => {
         setLoading(false)
@@ -31,12 +33,14 @@ const UserContext = ({children}) => {
         }
     }, [])
 
+    // sign up ba create user using email and password
     const createUser = (email, password) =>{
         setLoading(true)
        return createUserWithEmailAndPassword(auth, email, password)
        
     }
 
+    // sign in using email and password
     const signIn = (email, password) =>{
         setLoading(false)
        return signInWithEmailAndPassword(auth, email, password)
