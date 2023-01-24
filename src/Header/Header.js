@@ -5,7 +5,7 @@ import { AuthContext } from '../contexts/UserContext';
 
 const Header = () => {
     const provider = new GoogleAuthProvider();
-    const {user, loginWithGoogle} = useContext(AuthContext);
+    const {user, loginWithGoogle, logOut} = useContext(AuthContext);
 
     const handleGooglesignIn = () =>{
         console.log('clik');
@@ -18,6 +18,12 @@ const Header = () => {
             console.error('error', error)
         })
     }
+
+    const handleLogOut = () => {
+        logOut()
+          .then()
+          .catch()
+      }
     return (
         <div className='w-50 mx-auto'>
             <h1>This is Navber</h1>
@@ -26,6 +32,7 @@ const Header = () => {
             <Link to='/register'><button>Register</button></Link>
             <Link to='/login'><button>Login</button></Link>
             <Link to='/users'><button>All User</button></Link>
+            <button onClick={handleLogOut}>Log Out</button>
         </div>
     );
 };
